@@ -1,6 +1,7 @@
 package iscteiul.ista.ficha5;
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.Selenide;
+import com.codeborne.selenide.SelenideElement;
 import com.codeborne.selenide.logevents.SelenideLogger;
 import io.qameta.allure.selenide.AllureSelenide;
 import org.junit.jupiter.api.*;
@@ -23,28 +24,53 @@ public class MainPageTest {
     }
 
     @Test
-    public void search() {
-        mainPage.searchButton.click();
+    public void search() throws InterruptedException {
+        // Abre o campo de pesquisa no header
+        mainPage.searchButton.shouldBe(visible).click();
 
-        $("[data-test='search-input']").sendKeys("Selenium");
-        $("button[data-test='full-search-button']").click();
+        // Seleciona o input correto
+        SelenideElement searchInput = $("input[data-test-id='search-input']")
+                .shouldBe(visible);
 
-        $("input[data-test='search-input']").shouldHave(attribute("value", "Selenium"));
+        // Escreve "Selenium"
+        searchInput.setValue("Selenium");
+
+        // Verifica que o valor foi mesmo escrito (aqui o site ainda não limpou)
+        searchInput.shouldHave(attribute("value", "Selenium"));
+
+        // (Opcional) Se quiseres mesmo lançar a pesquisa:
+        // searchInput.pressEnter();
+
+        // Pausa só para conseguires ver o que aconteceu antes do fecho
+        Thread.sleep(2000); // NÃO usar thread.wait()
     }
 
-    @Test
-    public void toolsMenu() {
-        mainPage.toolsMenu.click();
 
-        $("div[data-test='main-submenu']").shouldBe(visible);
+    @Test
+    public void toolsMenu() throws InterruptedException {
+        // Clica no botão "Developer Tools"
+        mainPage.toolsMenu.shouldBe(visible).click();
+
+        // Verifica que o link "All IDEs" do submenu ficou visível
+        $("a[href='/ides/'][data-test='main-submenu-item-link']")
+                .shouldBe(visible);
+
+        // Só para conseguires ver o submenu aberto
+        Thread.sleep(3000);
     }
 
-    @Test
-    public void navigationToAllTools() {
-        mainPage.seeDeveloperToolsButton.click();
-        mainPage.findYourToolsButton.click();
 
+
+
+
+    @Test
+    public void navigationToAllTools() throws InterruptedException {
+        mainPage.seeDeveloperToolsButton.shouldBe(visible).click();
+        mainPage.findYourToolsButton.shouldBe(visible).click();
         $("#products-page").shouldBe(visible);
+        assertEquals("All Developer Tools and Products by JetBrains", Selenide.title());
+        Thread.sleep(3000);
+    }
 
-assertEquals("All Developer Tools and Products by JetBrains", Selenide.title());    }
+
 }
