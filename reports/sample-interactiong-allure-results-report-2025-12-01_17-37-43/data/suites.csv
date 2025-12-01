@@ -1,0 +1,2 @@
+"DESCRIPTION","DURATION IN MS","NAME","PARENT SUITE","START TIME","STATUS","STOP TIME","SUB SUITE","SUITE","TEST CLASS","TEST METHOD"
+"","21431","deveAcederAoComponenteInteractionButtonEClickar()","","2025-12-01","passed","2025-12-01","","iscteiul.ista.ficha5.part2.sampleinteraction.tests.SampleinteractionTest","iscteiul.ista.ficha5.part2.sampleinteraction.tests.SampleinteractionTest","deveAcederAoComponenteInteractionButtonEClickar"
