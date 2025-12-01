@@ -9,7 +9,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import static com.codeborne.selenide.Condition.attribute;
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.*;
-
+//iscteiul.ista.ficha5.dynamicloading
 public class MainPageTest {
     MainPage mainPage = new MainPage();
 
