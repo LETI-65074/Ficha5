@@ -1,0 +1,2 @@
+"DESCRIPTION","DURATION IN MS","NAME","PARENT SUITE","START TIME","STATUS","STOP TIME","SUB SUITE","SUITE","TEST CLASS","TEST METHOD"
+"","47663","deveAcederAoComponenteDataInput()","","2025-12-05","passed","2025-12-05","","Suite de Testes: Sampler 6 - Data Input (Textual)","iscteiul.ista.ficha5.part2.samplerDataInput.test.SamplerDataInputPageTest","deveAcederAoComponenteDataInput"
